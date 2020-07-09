@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ addTodo, isEng, language }) => {
   // Input Tracker
   let input
   // Return JSX
@@ -25,7 +25,7 @@ const TodoForm = ({ addTodo }) => {
             className='btn btn-primary'
             onClick={() => addTodo(input.value)}
           >
-            Add
+            {isEng ? language.addTextEn : language.addTextGerman}
           </button>
         </div>
       </div>

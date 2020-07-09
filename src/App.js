@@ -23,7 +23,14 @@ class TodoApp extends React.Component {
     // Set initial state
     this.state = {
       data: [],
-      canDelete: false
+      canDelete: false,
+      language: {
+        deleteTextEn: 'Delete',
+        deleteTextGerman: 'löschen',
+        addTextEn: 'Add',
+        addTextGerman: 'hinzufügen'
+      },
+      isEng: true
     }
     this.apiUrl = 'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
   }
@@ -34,7 +41,15 @@ class TodoApp extends React.Component {
       .findByName('setting')
       .then(res => {
         console.log(res)
-        this.setState({ canDelete: res.canDeleteListItem })
+        this.setState({
+          canDelete: res.canDeleteListItem,
+          language: {
+            deleteTextEn: res.deleteTextEn,
+            deleteTextGerman: res.deleteTextGerman,
+            addTextEn: res.addTextEn,
+            addTextGerman: res.addTextGerman
+          }
+        })
       })
       .catch(err => {
         console.log(err)
@@ -60,10 +75,10 @@ class TodoApp extends React.Component {
   // Handle remove
   handleRemove (id) {
     // Can only delete list item if Nonfig configuration allow
-    // if (!this.state.canDelete) {
-    //   alert('Sorry, you can delete list item.')
-    //   return
-    // }
+    if (!this.state.canDelete) {
+      alert('Sorry, you can delete list item enable delete from Nonfig.')
+      return
+    }
 
     // Filter all todos except the one to be removed
     const remainder = this.state.data.filter(todo => {
@@ -81,11 +96,25 @@ class TodoApp extends React.Component {
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12'>
+            <button
+              className='btn btn-primary'
+              onClick={() => this.setState({ isEng: !this.state.isEng })}
+            >
+              {!this.state.isEng
+                ? 'Sprache ändern (en)'
+                : 'Change language (de)'}
+            </button>
             <Title todoCount={this.state.data.length} />
-            <TodoForm addTodo={this.addTodo.bind(this)} />
+            <TodoForm
+              isEng={this.state.isEng}
+              addTodo={this.addTodo.bind(this)}
+              language={this.state.language}
+            />
             <TodoList
+              isEng={this.state.isEng}
               todos={this.state.data}
               remove={this.handleRemove.bind(this)}
+              language={this.state.language}
             />
           </div>
         </div>
