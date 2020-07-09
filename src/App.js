@@ -60,10 +60,10 @@ class TodoApp extends React.Component {
   // Handle remove
   handleRemove (id) {
     // Can only delete list item if Nonfig configuration allow
-    if (!this.state.canDelete) {
-      alert('Sorry, you can delete list item.')
-      return
-    }
+    // if (!this.state.canDelete) {
+    //   alert('Sorry, you can delete list item.')
+    //   return
+    // }
 
     // Filter all todos except the one to be removed
     const remainder = this.state.data.filter(todo => {

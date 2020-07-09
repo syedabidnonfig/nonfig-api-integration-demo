@@ -1,17 +1,21 @@
 import React from 'react'
 
-const Todo = ({ todo = '', remove }) => {
+const Todo = ({ todo = '', remove, position }) => {
   // Each Todo
   return (
-    <a
-      href='/'
-      className='list-group-item'
-      onClick={() => {
-        remove(todo.id)
-      }}
-    >
-      {todo.text}
-    </a>
+    <div>
+      <a href='/' className='list-group-item'>
+        {todo.text}
+        <span
+          class='badge badge-primary badge-pill'
+          onClick={() => {
+            remove(todo.id)
+          }}
+        >
+          Delete
+        </span>
+      </a>
+    </div>
   )
 }
 export default Todo
