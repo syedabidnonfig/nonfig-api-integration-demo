@@ -25,7 +25,7 @@ class TodoApp extends React.Component {
       data: [],
       canDelete: false
     }
-    this.apiUrl = 'http://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
+    this.apiUrl = 'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
   }
   // Lifecycle method
   componentDidMount () {
