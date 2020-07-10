@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Todo = ({ todo = '', remove, isEng, language }) => {
+const Todo = ({ todo = '', remove, isEng, settings }) => {
   // Each Todo
   return (
     <div>
@@ -12,7 +12,7 @@ const Todo = ({ todo = '', remove, isEng, language }) => {
             remove(todo.id)
           }}
         >
-          {isEng ? language.deleteTextEn : language.deleteTextGerman}
+          {isEng ? settings.en.deleteText : settings.de.deleteText}
         </span>
       </a>
     </div>

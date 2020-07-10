@@ -1,7 +1,7 @@
 import React from 'react'
 import Todo from './todo'
 
-export const TodoList = ({ todos, remove, isEng, language }) => {
+export const TodoList = ({ todos, remove, isEng, settings }) => {
   // Map through the todos
   const todoNode = todos.map((todo, index) => {
     return (
@@ -11,7 +11,7 @@ export const TodoList = ({ todos, remove, isEng, language }) => {
         remove={remove}
         position={index + 1}
         isEng={isEng}
-        language={language}
+        settings={settings}
       />
     )
   })
